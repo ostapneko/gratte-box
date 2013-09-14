@@ -9,3 +9,17 @@
 
   - include: "tasks/install-ghc.yml"
     when: ghc_installed|failed
+
+
+
+- hosts: development
+  sudo: yes
+  sudo_user: vagrant
+  tasks:
+  - name: cabal check
+    shell: "cabal --numeric-version | grep 1.18"
+    ignore_errors: yes
+    register: cabal_installed
+
+  - include: "tasks/install-cabal.yml"
+    when: cabal_installed|failed

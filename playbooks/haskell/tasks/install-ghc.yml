@@ -1,5 +1,9 @@
 - name: install GHC dependencies
-  apt: pkg=libgmp-dev
+  sudo: yes
+  apt: pkg=$item
+  with_items:
+    - libgmp-dev
+    - zlib1g-dev
 
 - name: link libgmp
   file: src=/usr/lib/i386-linux-gnu/libgmp.so.10

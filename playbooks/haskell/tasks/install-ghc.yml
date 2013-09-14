@@ -1,0 +1,25 @@
+- name: install GHC dependencies
+  apt: pkg=libgmp-dev
+
+- name: link libgmp
+  file: src=/usr/lib/i386-linux-gnu/libgmp.so.10
+        dest=/usr/lib/i386-linux-gnu/libgmp.so.3
+        state=link
+
+- name: Download GHC 7.6.3
+  get_url: url=http://www.haskell.org/ghc/dist/7.6.3/ghc-7.6.3-i386-unknown-linux.tar.bz2
+           dest=/tmp/ghc-install.tar.bz2
+
+- name: Unzip GHC
+  shell: tar xjf /tmp/ghc-install.tar.bz2
+         chdir=/tmp
+         creates=/tmp/ghc-7.6.3
+
+- name: Configure GHC
+  shell: ./configure
+         chdir=/tmp/ghc-7.6.3
+
+- name: Install GHC
+  sudo: yes
+  shell: make install
+         chdir=/tmp/ghc-7.6.3

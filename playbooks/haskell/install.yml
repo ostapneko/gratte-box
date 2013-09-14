@@ -1,0 +1,11 @@
+---
+- hosts: development
+  sudo: yes
+  tasks:
+  - name: check_ghc
+    shell: "ghc --version | grep 7.6.3"
+    ignore_errors: yes
+    register: ghc_installed
+
+  - include: "tasks/install-ghc.yml"
+    when: ghc_installed|failed

@@ -20,3 +20,11 @@
     ignore_errors: yes
   - include: "tasks/install-sbt.yml"
     when: sbt_installed|failed
+
+  # Play
+  - name: Check play installation
+    shell: play | grep -q 2.1.4
+    register: play_installed
+    ignore_errors: yes
+  - include: "tasks/install-play.yml"
+    when: play_installed|failed

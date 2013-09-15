@@ -2,7 +2,7 @@
   get_url: url=http://hackage.haskell.org/packages/archive/cabal-install/1.18.0.1/cabal-install-1.18.0.1.tar.gz
            dest=/tmp/cabal-install.tar.gz
 
-- name: Unzip GHC
+- name: Unzip Cabal
   shell: tar xzf /tmp/cabal-install.tar.gz
          chdir=/tmp
          creates=/tmp/cabal-install-1.18.0.1

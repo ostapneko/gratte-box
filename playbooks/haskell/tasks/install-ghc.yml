@@ -1,7 +1,8 @@
 - name: install GHC dependencies
   sudo: yes
-  apt: pkg=$item
+  apt: pkg=$item update_cache=yes
   with_items:
+    - build-essential
     - libgmp-dev
     - zlib1g-dev
 

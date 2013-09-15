@@ -3,7 +3,7 @@
   sudo: yes
   tasks:
   - name: check_ghc
-    shell: "ghc --version | grep 7.6.3"
+    shell: "ghc --version | grep -q 7.6.3"
     ignore_errors: yes
     register: ghc_installed
 
@@ -17,7 +17,7 @@
   sudo_user: vagrant
   tasks:
   - name: cabal check
-    shell: "cabal --numeric-version | grep 1.18"
+    shell: "cabal --numeric-version | grep -q 1.18"
     ignore_errors: yes
     register: cabal_installed
 

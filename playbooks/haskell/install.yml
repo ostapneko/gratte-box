@@ -1,6 +1,7 @@
 ---
 - hosts: development
   sudo: yes
+  sudo_user: vagrant
   tasks:
   - name: check_ghc
     shell: "ghc --version | grep -q 7.6.3"

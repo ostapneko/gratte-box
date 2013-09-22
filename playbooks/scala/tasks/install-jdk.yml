@@ -1,3 +1,0 @@
----
-- name: Install openjdk-7-jdk
-  apt: pkg=openjdk-7-jdk update_cache=yes

@@ -1,0 +1,9 @@
+---
+- hosts: all
+  sudo: yes
+  sudo_user: root
+  tasks:
+  - name: Install Tesseract
+    apt: pkg=tesseract-ocr
+         update_cache=yes
+         state=latest

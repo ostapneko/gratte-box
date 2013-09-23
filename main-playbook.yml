@@ -1,6 +1,7 @@
 ---
 # all hosts
 - include: "common/playbooks/elasticsearch/install.yml"
+- include: "common/playbooks/tesseract/install.yml"
 
 # dev hosts
 - include: "dev-config/playbooks/common_tools/install.yml"

@@ -1,0 +1,10 @@
+- hosts: all
+  sudo: yes
+  sudo_user: root
+  tasks:
+    - name: Download Elasticsearch
+      get_url: url=https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.5.deb
+               dest=/tmp/elasticsearch-0.90.5.deb
+
+    - name: Install Elasticsearch
+      shell: dpkg -i /tmp/elasticsearch-0.90.5.deb

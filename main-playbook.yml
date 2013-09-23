@@ -1,0 +1,10 @@
+---
+# all hosts
+- include: "common/playbooks/elasticsearch/install.yml"
+
+# dev hosts
+- include: "dev-config/playbooks/common_tools/install.yml"
+- include: "dev-config/playbooks/editors/emacs.yml"
+- include: "dev-config/playbooks/bash/configure.yml"
+- include: "dev-config/playbooks/ghc/install.yml"
+- include: "dev-config/playbooks/play/install.yml"

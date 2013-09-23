@@ -8,3 +8,7 @@
 
     - name: Install Elasticsearch
       shell: dpkg -i /tmp/elasticsearch-0.90.5.deb
+
+    - name: Ensure Elasticsearch is running
+      service: name=elasticsearch
+               state=running

@@ -1,1 +1,3 @@
 - include: "elasticsearch/install.yml"
+- include: "tesseract/install.yml"
+- include: "filesystem/configure.yml"

@@ -2,6 +2,10 @@
   sudo: yes
   sudo_user: root
   tasks:
+    - name: Install Java 7
+      apt: update_cache=yes
+           pkg=openjdk-7-jre-headless
+
     - name: Download Elasticsearch
       get_url: url=https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.5.deb
                dest=/tmp/elasticsearch-0.90.5.deb

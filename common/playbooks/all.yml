@@ -1,3 +1,15 @@
 - include: "elasticsearch/install.yml"
 - include: "tesseract/install.yml"
 - include: "filesystem/configure.yml"
+
+- hosts: all
+  sudo: yes
+  tasks:
+    - name: Install popler-utils for pdftotext
+      apt: update_cache=yes pkg=poppler-utils 
+
+- hosts: all
+  sudo: yes
+  tasks:
+    - name: Install imagemagick
+      apt: update_cache=yes pkg=imagemagick

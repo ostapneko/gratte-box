@@ -1,0 +1,30 @@
+---
+- hosts: all
+  sudo_user: ${gratte_user}
+  sudo: yes
+  tasks:
+  - name: Create a releases directory
+    file: path=/home/${gratte_user}/apps/gratte/releases
+          state=directory
+
+  - name: Create a shared config directory
+    file: path=/home/${gratte_user}/apps/gratte/shared/config
+          state=directory
+
+  - name: Create a shared pids directory
+    file: path=/home/${gratte_user}/apps/gratte/shared/pids
+          state=directory
+
+  - name: Create a log directory
+    sudo_user: root
+    file: path=/var/log/gratte
+          state=directory
+          owner=${gratte_user}
+          group=${gratte_user}
+
+  - name: Create a gratte directory
+    sudo_user: root
+    file: path=/var/gratte
+          state=directory
+          owner=${gratte_user}
+          group=${gratte_user}

@@ -1,9 +1,0 @@
----
-- hosts: all
-  sudo: yes
-  tasks:
-    - name: Add /var/log/gratte
-      file: path=/var/log/gratte
-            state=directory
-            owner=${gratte_user}
-            group=${gratte_user}

@@ -6,12 +6,19 @@
       apt: update_cache=yes
            pkg=openjdk-7-jre-headless
 
+    - name: Check elasticsearch install
+      command: /usr/bin/dpkg-query --list elasticsearch
+      register: elasticsearch_installed
+      ignore_errors: yes
+
     - name: Download Elasticsearch
       get_url: url=https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.5.deb
                dest=/tmp/elasticsearch-0.90.5.deb
+      when: elasticsearch_installed | failed
 
     - name: Install Elasticsearch
       shell: dpkg -i /tmp/elasticsearch-0.90.5.deb
+      when: elasticsearch_installed | failed
 
     - name: Ensure Elasticsearch is running
       service: name=elasticsearch

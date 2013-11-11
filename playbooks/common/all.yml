@@ -1,0 +1,22 @@
+- hosts: all
+  sudo: yes
+  tasks:
+    - name: Create a ${gratte_user} user
+      user: name=${gratte_user} state=present shell=/bin/bash createhome=yes
+
+    - name: Install poppler-utils, Imagemagick and Tesseract
+      apt: update_cache=yes pkg=${item}
+      with_items:
+        - poppler-utils
+        - imagemagick
+        - tesseract-ocr
+
+    - name: Copy gratte-server Upstart conf file
+      template: src=files/gratte-server.conf.j2
+                dest=/etc/init/gratte-server.conf
+
+- include: elasticsearch/install.yml
+
+- include: filesystem/configure.yml
+
+- include: nginx/install.yml
